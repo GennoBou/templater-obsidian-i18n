@@ -1,4 +1,5 @@
 import { addIcon, Notice, Plugin } from "obsidian";
+import { t } from "./i18n";
 
 import {
     DEFAULT_SETTINGS,
@@ -39,7 +40,7 @@ export default class TemplaterPlugin extends Plugin {
         this.command_handler.setup();
 
         addIcon("templater-icon", ICON_DATA);
-        this.addRibbonIcon("templater-icon", "Templater", () => {
+        this.addRibbonIcon("templater-icon", t("Templater"), () => {
             this.fuzzy_suggester.insert_template();
         }).setAttribute("id", "rb-templater-icon");
 
@@ -75,10 +76,10 @@ export default class TemplaterPlugin extends Plugin {
         this.settings = settings;
         if (affectedSecuritySettings.length > 0) {
             new Notice(
-                "Templater: The following settings were reset because they " +
-                    "are now device-local: " +
-                    affectedSecuritySettings.join(", ") +
-                    ". Re-enable them in Templater settings if you trust this vault.",
+                t(
+                    "Templater: The following settings were reset because they are now device-local: {settings}. Re-enable them in Templater settings if you trust this vault.",
+                    { settings: affectedSecuritySettings.join(", ") },
+                ),
                 0,
             );
         }

@@ -61,6 +61,8 @@ export function serialize_template_hotkey(
     };
 }
 
+import { t } from "i18n";
+
 /**
  * Human readable summary of the commands a hotkey registers.
  */
@@ -68,7 +70,7 @@ export function describe_template_hotkey_commands(
     hotkey: ResolvedTemplateHotkey,
 ): string {
     const commands: string[] = [];
-    if (hotkey.insert_enabled) commands.push("Insert");
-    if (hotkey.create_enabled) commands.push("Create");
-    return commands.length > 0 ? commands.join(", ") : "None";
+    if (hotkey.insert_enabled) commands.push(t("Insert"));
+    if (hotkey.create_enabled) commands.push(t("Create"));
+    return commands.length > 0 ? commands.join(", ") : t("None");
 }

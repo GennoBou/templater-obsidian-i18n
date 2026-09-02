@@ -2,6 +2,7 @@ import { AbstractInputSuggest, TAbstractFile, TFile } from "obsidian";
 import { get_tfiles_from_folder } from "utils/Utils";
 import TemplaterPlugin from "main";
 import { errorWrapperSync } from "utils/Error";
+import { t } from "i18n";
 
 export enum FileSuggestMode {
     TemplateFiles,
@@ -29,9 +30,9 @@ export class FileSuggest extends AbstractInputSuggest<TFile> {
     get_error_msg(mode: FileSuggestMode): string {
         switch (mode) {
             case FileSuggestMode.TemplateFiles:
-                return `Templates folder doesn't exist`;
+                return t("Templates folder doesn't exist");
             case FileSuggestMode.ScriptFiles:
-                return `User Scripts folder doesn't exist`;
+                return t("User Scripts folder doesn't exist");
         }
     }
 

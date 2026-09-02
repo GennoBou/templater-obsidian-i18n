@@ -9,6 +9,7 @@ import {
 import { TemplaterSettingTab } from "settings/Settings";
 import { errorWrapperSync } from "utils/Error";
 import { get_tfiles_from_folder } from "utils/Utils";
+import { t, tDom } from "i18n";
 
 export class UserScriptsPage extends SettingPage {
     pluginSettingTab: TemplaterSettingTab;
@@ -31,7 +32,7 @@ export class UserScriptsPage extends SettingPage {
                     this.plugin.app,
                     this.plugin.settings.user_scripts_folder,
                 ),
-            `User scripts folder doesn't exist`,
+            t("User scripts folder doesn't exist"),
         );
         this.userScripts = Array.isArray(files)
             ? files.filter((file) => file.extension === "js")
@@ -54,7 +55,7 @@ export class UserScriptsPage extends SettingPage {
                 .setHeading()
                 .addExtraButton((cb) => {
                     cb.setIcon("folder")
-                        .setTooltip("Open user scripts folder")
+                        .setTooltip(t("Open user scripts folder"))
                         .onClick(() =>
                             this.openUserScriptsFolderInDefaultApp(),
                         );
@@ -68,16 +69,22 @@ export class UserScriptsPage extends SettingPage {
                         const desc = createFragment();
                         if (!this.plugin.settings.user_scripts_folder) {
                             desc.append(
-                                "No user scripts folder set. Please set the user scripts folder on the previous page.",
+                                t(
+                                    "No user scripts folder set. Please set the user scripts folder on the previous page.",
+                                ),
                                 desc.createEl("br"),
                                 desc.createEl("br"),
                             );
                         }
                         desc.append(
-                            "User scripts are JavaScript files that are loaded as CommonJS modules. You can then call these functions from your templates using ",
-                            desc.createEl("code", {
-                                text: "<% tp.user.file_name() %>",
-                            }),
+                            tDom(
+                                "User scripts are JavaScript files that are loaded as CommonJS modules. You can then call these functions from your templates using {code}",
+                                {
+                                    code: createEl("code", {
+                                        text: "<% tp.user.file_name() %>",
+                                    }),
+                                },
+                            ),
                         );
                         return desc;
                     })(),

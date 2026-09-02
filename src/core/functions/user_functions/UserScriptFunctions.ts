@@ -4,6 +4,7 @@ import { IGenerateObject } from "../IGenerateObject";
 import { get_tfiles_from_folder } from "utils/Utils";
 import { errorWrapperSync, TemplaterError } from "utils/Error";
 import { UserScriptFunction } from "types";
+import { t } from "i18n";
 
 export class UserScriptFunctions implements IGenerateObject {
     constructor(private plugin: TemplaterPlugin) {}
@@ -19,7 +20,9 @@ export class UserScriptFunctions implements IGenerateObject {
                     this.plugin.app,
                     this.plugin.settings.user_scripts_folder,
                 ),
-            `Couldn't find user script folder "${this.plugin.settings.user_scripts_folder}"`,
+            t('Couldn\'t find user script folder "{folder}"', {
+                folder: this.plugin.settings.user_scripts_folder,
+            }),
         );
         if (!files) {
             return new Map();
@@ -62,7 +65,9 @@ export class UserScriptFunctions implements IGenerateObject {
             wrapping_fn(req, mod, exp);
         } catch (err) {
             throw new TemplaterError(
-                `Failed to load user script at "${file.path}".`,
+                t('Failed to load user script at "{path}".', {
+                    path: file.path,
+                }),
                 err instanceof Error ? err.message : String(err),
             );
         }
@@ -70,7 +75,12 @@ export class UserScriptFunctions implements IGenerateObject {
 
         if (!exported) {
             throw new TemplaterError(
-                `Failed to load user script at "${file.path}". No exports detected.`,
+                t(
+                    'Failed to load user script at "{path}". No exports detected.',
+                    {
+                        path: file.path,
+                    },
+                ),
             );
         }
 
@@ -86,7 +96,12 @@ export class UserScriptFunctions implements IGenerateObject {
             if (!allValuesAreFunctions) {
                 // ❌ Error: The exported object contains non-function values
                 throw new TemplaterError(
-                    `Exported object in "${file.path}" must contain only functions.`,
+                    t(
+                        'Exported object in "{path}" must contain only functions.',
+                        {
+                            path: file.path,
+                        },
+                    ),
                 );
             }
 
@@ -96,7 +111,12 @@ export class UserScriptFunctions implements IGenerateObject {
         // ❌ Error: The export is neither a function nor an object of functions
         else {
             throw new TemplaterError(
-                `Invalid export in "${file.path}". Must be a function or object of functions.`,
+                t(
+                    'Invalid export in "{path}". Must be a function or object of functions.',
+                    {
+                        path: file.path,
+                    },
+                ),
             );
         }
     }

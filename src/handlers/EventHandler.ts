@@ -11,6 +11,7 @@ import {
 } from "obsidian";
 import { get_active_file } from "utils/Utils";
 import { getLocalSettings } from "settings/LocalSettings";
+import { t } from "i18n";
 
 export default class EventHandler {
     constructor(
@@ -78,7 +79,7 @@ export default class EventHandler {
                 (menu: Menu, file: TFile) => {
                     if (file instanceof TFolder) {
                         menu.addItem((item: MenuItem) => {
-                            item.setTitle("Create new note from template")
+                            item.setTitle(t("Create new note from template"))
                                 .setIcon("templater-icon")
                                 .onClick(() => {
                                     this.plugin.fuzzy_suggester.create_new_note_from_template(

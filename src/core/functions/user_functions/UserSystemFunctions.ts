@@ -5,6 +5,7 @@ import { RunningConfig } from "core/Templater";
 import { UNSUPPORTED_MOBILE_TEMPLATE } from "utils/Constants";
 import { TemplaterError } from "utils/Error";
 import { FunctionsMode } from "../FunctionsGenerator";
+import { t } from "i18n";
 
 export class UserSystemFunctions implements IGenerateObject {
     private cwd: string;
@@ -95,7 +96,9 @@ export class UserSystemFunctions implements IGenerateObject {
                             return stdout.trimRight();
                         } catch (error) {
                             throw new TemplaterError(
-                                `Error with User Template ${template}`,
+                                t("Error with User Template {template}", {
+                                    template,
+                                }),
                                 error instanceof Error
                                     ? error.message
                                     : String(error),

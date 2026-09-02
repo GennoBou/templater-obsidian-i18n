@@ -25,6 +25,7 @@ import {
 
 import TemplaterPlugin from "main";
 import { append_bolded_label_with_value_to_parent } from "utils/Utils";
+import { t } from "i18n";
 
 export class Autocomplete extends EditorSuggest<TpSuggestDocumentation> {
     //private in_command = false;
@@ -137,7 +138,7 @@ export class Autocomplete extends EditorSuggest<TpSuggestDocumentation> {
 
         if (isFunctionDocumentation) {
             if (shouldRenderFunctionParameters) {
-                el.createEl("p", { text: "Parameter list:" });
+                el.createEl("p", { text: t("Parameter list:") });
                 const list = el.createEl("ol");
                 for (const [key, val] of Object.entries(value.args ?? {})) {
                     append_bolded_label_with_value_to_parent(
@@ -150,7 +151,7 @@ export class Autocomplete extends EditorSuggest<TpSuggestDocumentation> {
             if (shouldRenderFunctionReturns) {
                 append_bolded_label_with_value_to_parent(
                     el,
-                    "Returns",
+                    t("Returns"),
                     value.returns,
                 );
             }

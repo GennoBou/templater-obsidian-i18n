@@ -8,6 +8,7 @@ import {
     setIcon,
     TextComponent,
 } from "obsidian";
+import { t } from "i18n";
 
 export class MultiSuggesterModal<T> extends Modal {
     private resolve: (values: T[]) => void;
@@ -44,11 +45,11 @@ export class MultiSuggesterModal<T> extends Modal {
             "modal-button-container"
         );
         new ButtonComponent(buttonContainer)
-            .setButtonText("Save")
+            .setButtonText(t("Save"))
             .setCta()
             .onClick(() => this.save());
         new ButtonComponent(buttonContainer)
-            .setButtonText("Cancel")
+            .setButtonText(t("Cancel"))
             .onClick(() => this.close());
         if (default_values) {
             this.selectedItems = default_values;

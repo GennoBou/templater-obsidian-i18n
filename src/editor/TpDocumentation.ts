@@ -2,6 +2,7 @@ import TemplaterPlugin from "main";
 import { TFile } from "obsidian";
 import * as acorn from "acorn";
 import { errorWrapper } from "utils/Error";
+import { t } from "i18n";
 import {
     generate_jsdoc_documentation,
     get_fn_params,
@@ -131,7 +132,7 @@ export class Documentation {
                             this.plugin.settings.user_scripts_folder,
                         ).filter((x) => x.extension === "js"),
                     ),
-                `User Scripts folder doesn't exist`,
+                t("User Scripts folder doesn't exist"),
             );
             if (!jsFiles || jsFiles.length === 0) return;
 
@@ -151,7 +152,7 @@ export class Documentation {
 
             const docFiles = await errorWrapper(
                 () => populate_docs_from_user_scripts(this.plugin.app, jsFiles),
-                `Failed to parse user script documentation`,
+                t("Failed to parse user script documentation"),
             );
             if (!docFiles || docFiles.length === 0) return;
 

@@ -7,6 +7,7 @@
         "dev": "node esbuild.config.mjs",
         "build": "node esbuild.config.mjs production",
         "typecheck": "tsc --noEmit",
+        "check-i18n": "node scripts/check-i18n.mjs",
         "lint": "eslint src/",
         "test:lint": "npm run lint",
         "pretest": "node esbuild.config.mjs production",

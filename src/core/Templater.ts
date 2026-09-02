@@ -27,6 +27,7 @@ import { errorWrapper, errorWrapperSync, TemplaterError } from "utils/Error";
 import { Parser } from "./parser/Parser";
 import { log_error } from "utils/Log";
 import { getLocalSettings } from "settings/LocalSettings";
+import { t } from "i18n";
 
 export enum RunMode {
     CreateNewFromTemplate,
@@ -169,7 +170,7 @@ export class Templater {
                 await this.plugin.app.vault.createFolder(folder_path);
             }
             return this.plugin.app.vault.create(path, "");
-        }, `Couldn't create ${extension} file.`);
+        }, t("Couldn't create {extension} file.", { extension }));
 
         if (created_note == null) {
             return;
@@ -187,7 +188,7 @@ export class Templater {
             );
             output_content = await errorWrapper(
                 async () => this.read_and_parse_template(running_config),
-                "Template parsing error, aborting.",
+                t("Template parsing error, aborting."),
             );
         } else {
             running_config = this.create_running_config(
@@ -197,7 +198,7 @@ export class Templater {
             );
             output_content = await errorWrapper(
                 async () => this.parse_template(running_config, template),
-                "Template parsing error, aborting.",
+                t("Template parsing error, aborting."),
             );
         }
 
@@ -246,7 +247,9 @@ export class Templater {
         const active_editor = this.plugin.app.workspace.activeEditor;
         if (!active_editor || !active_editor.file || !active_editor.editor) {
             log_error(
-                new TemplaterError("No active editor, can't append templates."),
+                new TemplaterError(
+                    t("No active editor, can't append templates."),
+                ),
             );
             return;
         }
@@ -259,7 +262,7 @@ export class Templater {
         );
         const output_content = await errorWrapper(
             async () => this.read_and_parse_template(running_config),
-            "Template parsing error, aborting.",
+            t("Template parsing error, aborting."),
         );
         // errorWrapper failed
         if (output_content == null) {
@@ -322,7 +325,7 @@ export class Templater {
         );
         let output_content = await errorWrapper(
             async () => this.read_and_parse_template(running_config),
-            "Template parsing error, aborting.",
+            t("Template parsing error, aborting."),
         );
         // errorWrapper failed
         if (output_content == null) {
@@ -395,7 +398,7 @@ export class Templater {
         if (!active_editor || !active_editor.file) {
             log_error(
                 new TemplaterError(
-                    "Active editor is null, can't overwrite content",
+                    t("Active editor is null, can't overwrite content"),
                 ),
             );
             return;
@@ -416,7 +419,7 @@ export class Templater {
         );
         const output_content = await errorWrapper(
             async () => this.read_and_parse_template(running_config),
-            "Template parsing error, aborting.",
+            t("Template parsing error, aborting."),
         );
         // errorWrapper failed
         if (output_content == null) {
@@ -487,7 +490,9 @@ export class Templater {
                                 functions_object,
                             );
                         },
-                        `Command Parsing error in dynamic command '${complete_command}'`,
+                        t("Command Parsing error in dynamic command '{command}'", {
+                            command: complete_command,
+                        }),
                     );
                     if (command_output == null) {
                         return;
@@ -596,7 +601,9 @@ export class Templater {
                 async (): Promise<TFile> => {
                     return resolve_tfile(app, folder_template_match);
                 },
-                `Couldn't find template ${folder_template_match}`,
+                t("Couldn't find template {template}", {
+                    template: folder_template_match,
+                }),
             );
             // errorWrapper failed
             if (template_file == null) {
@@ -616,7 +623,9 @@ export class Templater {
                 async (): Promise<TFile> => {
                     return resolve_tfile(app, file_template_match);
                 },
-                `Couldn't find template ${file_template_match}`,
+                t("Couldn't find template {template}", {
+                    template: file_template_match,
+                }),
             );
             // errorWrapper failed
             if (template_file == null) {
@@ -646,7 +655,7 @@ export class Templater {
             }
             const file = errorWrapperSync(
                 () => resolve_tfile(this.plugin.app, template),
-                `Couldn't find startup template "${template}"`,
+                t('Couldn\'t find startup template "{template}"', { template }),
             );
             if (!file) {
                 continue;
@@ -660,7 +669,7 @@ export class Templater {
             );
             await errorWrapper(
                 async () => this.read_and_parse_template(running_config),
-                `Startup Template parsing error, aborting.`,
+                t("Startup Template parsing error, aborting."),
             );
             await this.end_templater_task(path);
         }
