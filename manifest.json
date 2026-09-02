@@ -1,17 +1,17 @@
 {
-    "id": "templater-obsidian-i18n",
-    "name": "Templater (i18n)",
-    "version": "26.9.2",
-    "description": "Advanced templating and automation using handlebars-like syntax. (Multilingual / Japanese edition)",
-    "minAppVersion": "1.13.0",
-    "author": "SilentVoid13 (i18n by GennoBou)",
-    "authorUrl": "https://github.com/GennoBou",
-    "fundingUrl": {
-        "GitHub Sponser (Zachatoo, maintainer)": "https://github.com/sponsors/Zachatoo",
-        "Ko-fi (Zachatoo, maintainer)": "https://ko-fi.com/zachatoo",
-        "GitHub Sponser (SilentVoid13, creator)": "https://github.com/sponsors/SilentVoid13",
-        "Paypal (SilentVoid13, creator)": "https://www.paypal.com/donate?hosted_button_id=U2SRGAFYXT32Q"
-    },
-    "helpUrl": "https://silentvoid13.github.io/Templater/",
-    "isDesktopOnly": false
+  "id": "templater-obsidian-i18n",
+  "name": "Templater (i18n)",
+  "version": "26.9.2.1",
+  "description": "Advanced templating and automation using handlebars-like syntax. (Multilingual Support)",
+  "minAppVersion": "1.13.0",
+  "author": "SilentVoid13 (i18n by GennoBou)",
+  "authorUrl": "https://github.com/GennoBou",
+  "fundingUrl": {
+    "GitHub Sponser (Zachatoo, maintainer)": "https://github.com/sponsors/Zachatoo",
+    "Ko-fi (Zachatoo, maintainer)": "https://ko-fi.com/zachatoo",
+    "GitHub Sponser (SilentVoid13, creator)": "https://github.com/sponsors/SilentVoid13",
+    "Paypal (SilentVoid13, creator)": "https://www.paypal.com/donate?hosted_button_id=U2SRGAFYXT32Q"
+  },
+  "helpUrl": "https://silentvoid13.github.io/Templater/",
+  "isDesktopOnly": false
 }
