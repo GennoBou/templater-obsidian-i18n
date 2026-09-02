@@ -52,18 +52,19 @@ const copyOutputPlugin = {
     name: "copy-output",
     setup(build) {
         build.onEnd(() => {
-            fs.copyFileSync(
-                "main.js",
-                `test/vault/.obsidian/plugins/${manifest.id}/main.js`,
-            );
-            fs.copyFileSync(
-                "manifest.json",
-                `test/vault/.obsidian/plugins/${manifest.id}/manifest.json`,
-            );
-            fs.copyFileSync(
-                "styles.css",
-                `test/vault/.obsidian/plugins/${manifest.id}/styles.css`,
-            );
+            const targetDir = `test/vault/.obsidian/plugins/${manifest.id}`;
+            if (fs.existsSync(path.dirname(targetDir))) {
+                fs.mkdirSync(targetDir, { recursive: true });
+                if (fs.existsSync("main.js")) {
+                    fs.copyFileSync("main.js", `${targetDir}/main.js`);
+                }
+                if (fs.existsSync("manifest.json")) {
+                    fs.copyFileSync("manifest.json", `${targetDir}/manifest.json`);
+                }
+                if (fs.existsSync("styles.css")) {
+                    fs.copyFileSync("styles.css", `${targetDir}/styles.css`);
+                }
+            }
         });
     },
 };

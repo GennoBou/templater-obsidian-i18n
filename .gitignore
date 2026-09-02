@@ -18,9 +18,7 @@ main.test.js
 # test
 tests_jest/
 .obsidian-cache/
-test/vault/.obsidian/plugins/templater-obsidian/main.js
-test/vault/.obsidian/plugins/templater-obsidian/manifest.json
-test/vault/.obsidian/plugins/templater-obsidian/styles.css
+test/vault/.obsidian/plugins/
 
 # Obsidian
 /data.json

@@ -1,3 +1,19 @@
+# Templater (i18n)
+
+> [!NOTE]
+> **多言語対応・日本語化版 (Multilingual / Japanese edition)**  
+> このリポジトリは [SilentVoid13/Templater](https://github.com/SilentVoid13/Templater) をベースに多言語化（i18n）・日本語ローカライズを行ったフォークです。  
+> Obsidianの言語設定に合わせて自動で日本語UIが表示されます。また、プラグインフォルダ内の `localize.json` を編集することで表示テキストを自由にカスタマイズできます。
+
+## 📥 インストール方法（BRAT）
+
+1. Obsidian のコミュニティプラグイン「[BRAT](https://github.com/TfTHacker/obsidian-42-brat)」をインストールして有効化します。
+2. コマンドパレット（`Ctrl+P` / `Cmd+P`）から `BRAT: Add a beta plugin for testing` を実行します。
+3. リポジトリURLに `https://github.com/GennoBou/templater-obsidian-i18n`（または `GennoBou/templater-obsidian-i18n`）を入力します。
+4. インストール完了後、コミュニティプラグイン一覧から **Templater (i18n)** を有効化してください。
+
+---
+
 # Templater Plugin for Obsidian
 
 ![templater_logo](./imgs/templater_logo.svg)

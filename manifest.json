@@ -1,11 +1,11 @@
 {
-    "id": "templater-obsidian",
-    "name": "Templater",
-    "version": "2.25.0",
-    "description": "Advanced templating and automation using handlebars-like syntax.",
+    "id": "templater-obsidian-i18n",
+    "name": "Templater (i18n)",
+    "version": "26.9.2",
+    "description": "Advanced templating and automation using handlebars-like syntax. (Multilingual / Japanese edition)",
     "minAppVersion": "1.13.0",
-    "author": "SilentVoid",
-    "authorUrl": "https://github.com/SilentVoid13",
+    "author": "SilentVoid13 (i18n by GennoBou)",
+    "authorUrl": "https://github.com/GennoBou",
     "fundingUrl": {
         "GitHub Sponser (Zachatoo, maintainer)": "https://github.com/sponsors/Zachatoo",
         "Ko-fi (Zachatoo, maintainer)": "https://ko-fi.com/zachatoo",
