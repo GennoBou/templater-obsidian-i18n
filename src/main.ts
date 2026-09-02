@@ -1,5 +1,5 @@
 import { addIcon, Notice, Plugin } from "obsidian";
-import { t } from "./i18n";
+import { t, initLocalizeJson } from "./i18n";
 
 import {
     DEFAULT_SETTINGS,
@@ -23,6 +23,7 @@ export default class TemplaterPlugin extends Plugin {
     public editor_handler: Editor;
 
     async onload(): Promise<void> {
+        await initLocalizeJson(this.app, this.manifest);
         await this.load_settings();
 
         this.templater = new Templater(this);
