@@ -24,6 +24,7 @@
         "i18n",
         "japanese"
     ],
+    "packageManager": "pnpm@10.5.2",
     "author": "SilentVoid13 (i18n by GennoBou)",
     "license": "AGPL-3.0-only",
     "devDependencies": {
