@@ -1,16 +1,37 @@
 # Templater (i18n)
 
 > [!NOTE]
-> **多言語対応・日本語化版 (Multilingual / Japanese edition)**  
-> このリポジトリは [SilentVoid13/Templater](https://github.com/SilentVoid13/Templater) をベースに多言語化（i18n）・日本語ローカライズを行ったフォークです。  
-> Obsidianの言語設定に合わせて自動で日本語UIが表示されます。また、プラグインフォルダ内の `localize.json` を編集することで表示テキストを自由にカスタマイズできます。
-
-## 📥 インストール方法（BRAT）
-
-1. Obsidian のコミュニティプラグイン「[BRAT](https://github.com/TfTHacker/obsidian-42-brat)」をインストールして有効化します。
-2. コマンドパレット（`Ctrl+P` / `Cmd+P`）から `BRAT: Add a beta plugin for testing` を実行します。
-3. リポジトリURLに `https://github.com/GennoBou/templater-obsidian-i18n`（または `GennoBou/templater-obsidian-i18n`）を入力します。
-4. インストール完了後、コミュニティプラグイン一覧から **Templater (i18n)** を有効化してください。
+> **About this i18n Fork / 多言語版について**
+>
+> This repository is a fork of [SilentVoid13/Templater](https://github.com/SilentVoid13/Templater) that introduces internationalization (i18n) support and Japanese localization resources.
+> It is intended for personal and community use. To install this plugin in Obsidian, please use the **[Obsidian42 - BRAT](https://github.com/TfTHacker/obsidian42-brat)** plugin.
+> Once the upstream plugin officially supports internationalization and Japanese locales, this repository will be archived.
+>
+> **Installation via BRAT**:
+> 1. Enable the BRAT plugin in Obsidian.
+> 2. Run `BRAT: Plugins: Add a beta plugin for testing` from the Command Palette.
+> 3. Enter this repository URL: `https://github.com/GennoBou/templater-obsidian-i18n`
+>
+> **Custom Translations (localize.json)**:
+> - You can add custom translations or override text by editing `localize.json` in the plugin folder (`.obsidian/plugins/templater-obsidian-i18n/`).
+> - Set your target language code in `"language"` (e.g. `"en"`, `"ja"`, `"de"`), modify `"translations"` / `"resource"`, and reload Obsidian.
+> - Deleting `localize.json` and reloading Obsidian will reset it to the default template.
+>
+> ---
+>
+> 本リポジトリは、[SilentVoid13/Templater](https://github.com/SilentVoid13/Templater) を多言語化 (i18n) し、日本語リソースを追加したフォーク版です。
+> 個人利用・コミュニティ提供を目的としており、Obsidianへのインストールは **[Obsidian42 - BRAT](https://github.com/TfTHacker/obsidian42-brat)** プラグイン経由で行ってください。
+> 本家が多言語対応と日本語ロケールを公式実装したとき、本リポジトリの役目は終えアーカイブされます。
+>
+> **BRATでのインストール手順**:
+> 1. Obsidianで BRAT プラグインを有効化
+> 2. コマンドパレットから `BRAT: Plugins: Add a beta plugin for testing` を実行
+> 3. 本リポジトリのURL (`https://github.com/GennoBou/templater-obsidian-i18n`) を入力
+>
+> **独自翻訳の追加・カスタマイズ (localize.json)**:
+> - プラグインフォルダ内の `localize.json` を編集することで、独自翻訳の追加や上書きが可能です。
+> - `"language"` に使用したい言語コード（例: 英語=`"en"`, 日本語=`"ja"`, ドイツ語=`"de"` 等）を入力し、`"translations"` 以下を書き換えてアプリを再起動すると反映されます。
+> - `localize.json` を削除してアプリを再起動すると、初期状態に自動復元されます。
 
 ---
 
