@@ -8,7 +8,7 @@ import en from "./locales/en.json";
 import ja from "./locales/ja.json";
 
 export type TranslationDict = Record<string, string>;
-export type SupportedLocale = "en" | "ja" | string;
+export type SupportedLocale = "en" | "ja" | (string & {});
 
 export interface LocalizeConfig {
     language?: string;
@@ -20,8 +20,8 @@ export interface LocalizeConfig {
 }
 
 const builtinTranslations: Record<string, TranslationDict> = {
-    en: en as TranslationDict,
-    ja: ja as TranslationDict,
+    en,
+    ja,
 };
 
 let customTranslations: Record<string, TranslationDict> = {};
@@ -114,7 +114,7 @@ export async function initLocalizeJson(app: App, manifest: PluginManifest): Prom
  */
 function interpolate(template: string, params?: Record<string, string | number>): string {
     if (!params) return template;
-    return template.replace(/\{(\w+)\}/g, (match, key) => {
+    return template.replace(/\{(\w+)\}/g, (match: string, key: string) => {
         return Object.prototype.hasOwnProperty.call(params, key) ? String(params[key]) : match;
     });
 }

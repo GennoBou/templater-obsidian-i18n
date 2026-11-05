@@ -24,13 +24,13 @@ export class MultiSuggesterModal<T> extends Modal {
         private items: T[],
         title: string,
         limit?: number,
-        default_values?: T[]
+        default_values?: T[],
     ) {
         super(app);
         this.setTitle(title);
         this.listEl = this.contentEl.createDiv("templater-multisuggester-list");
         const inputContainer = this.contentEl.createDiv(
-            "templater-multisuggester-div"
+            "templater-multisuggester-div",
         );
         const inputComponent = new TextComponent(inputContainer);
         inputComponent.inputEl.addClass("templater-multisuggester-input");
@@ -39,10 +39,10 @@ export class MultiSuggesterModal<T> extends Modal {
             inputComponent.inputEl,
             (item: T) => this.getItemText(item),
             items,
-            limit
+            limit,
         ).onSelect((item: T) => this.onChooseItem(item));
         const buttonContainer = this.contentEl.createDiv(
-            "modal-button-container"
+            "modal-button-container",
         );
         new ButtonComponent(buttonContainer)
             .setButtonText(t("Save"))
@@ -63,18 +63,20 @@ export class MultiSuggesterModal<T> extends Modal {
     display(): void {
         this.listEl.empty();
         this.selectedItems.forEach((item) => {
-            const itemEl = this.listEl.createDiv("mobile-option-setting-item");
+            const itemEl = this.listEl.createDiv(
+                "templater-multisuggester-list-item",
+            );
             itemEl
-                .createSpan("mobile-option-setting-item-name")
+                .createSpan("templater-multisuggester-list-item-name")
                 .setText(this.getItemText(item));
             itemEl.createDiv(
-                "clickable-icon mobile-option-setting-item-option-icon",
+                "clickable-icon templater-multisuggester-list-item-option-icon",
                 (deleteEl) => {
                     setIcon(deleteEl, "lucide-x");
                     deleteEl.addEventListener("click", () => {
                         this.onRemoveItem(item);
                     });
-                }
+                },
             );
         });
     }
@@ -96,7 +98,7 @@ export class MultiSuggesterModal<T> extends Modal {
     private processSelectedItems(): void {
         const filteredItems = this.items.filter((item) => {
             return !this.selectedItems.some(
-                (selected_item) => selected_item === item
+                (selected_item) => selected_item === item,
             );
         });
         this.suggester.setItems(filteredItems);
@@ -105,11 +107,11 @@ export class MultiSuggesterModal<T> extends Modal {
 
     onRemoveItem(item: T): void {
         this.selectedItems = this.selectedItems.filter(
-            (selectedItem) => selectedItem !== item
+            (selectedItem) => selectedItem !== item,
         );
         const filteredItems = this.items.filter((item) => {
             return !this.selectedItems.some(
-                (selected_item) => selected_item === item
+                (selected_item) => selected_item === item,
             );
         });
         this.suggester.setItems(filteredItems);
@@ -130,7 +132,7 @@ export class MultiSuggesterModal<T> extends Modal {
 
     async openAndGetValue(
         resolve: (values: T[]) => void,
-        reject: (reason?: TemplaterError) => void
+        reject: (reason?: TemplaterError) => void,
     ): Promise<void> {
         this.resolve = resolve;
         this.reject = reject;
@@ -141,10 +143,10 @@ export class MultiSuggesterModal<T> extends Modal {
 class Suggester<T> extends AbstractInputSuggest<T> {
     constructor(
         app: App,
-        textInputEl: HTMLInputElement | HTMLDivElement,
+        private textInputEl: HTMLInputElement | HTMLDivElement,
         private getItemText: (item: T) => string,
         private items: T[],
-        limit?: number
+        limit?: number,
     ) {
         super(app, textInputEl);
         if (limit) {
@@ -174,5 +176,6 @@ class Suggester<T> extends AbstractInputSuggest<T> {
         this.setValue("");
         this.close();
         super.selectSuggestion(value, evt);
+        this.textInputEl.dispatchEvent(new Event("input"));
     }
 }

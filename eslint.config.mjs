@@ -24,7 +24,7 @@ export default defineConfig([
                 ...globals.browser,
                 ...obsidianGlobals,
                 ...globals.mocha,
-                Webdriverio: "readonly",
+                WebdriverIO: "readonly",
             },
             parserOptions: {
                 projectService: {
@@ -37,16 +37,11 @@ export default defineConfig([
     },
     ...obsidianmd.configs.recommended,
     {
-        rules: {
-            // eval is required to execute user scripts dynamically loaded
-            // from the vault.
-            "no-eval": "off",
-        },
-    },
-    {
         files: ["test/**/*.ts"],
         rules: {
             "no-restricted-imports": "off",
+            "@typescript-eslint/no-restricted-imports": "off",
+            "obsidianmd/hardcoded-config-path": "off",
         },
     },
     wdioConfigs["flat/recommended"],
@@ -58,5 +53,6 @@ export default defineConfig([
         "versions.json",
         "main.js",
         "src/editor/mode/javascript.js",
+        "test/vault/",
     ]),
 ]);
