@@ -1,7 +1,7 @@
 {
     "id": "templater-obsidian-i18n",
     "name": "Templater (i18n)",
-    "version": "2.26.0",
+    "version": "26.11.6",
     "description": "Advanced templating and automation using handlebars-like syntax. (Multilingual Support)",
     "minAppVersion": "1.13.0",
     "author": "SilentVoid13 (i18n by GennoBou)",
