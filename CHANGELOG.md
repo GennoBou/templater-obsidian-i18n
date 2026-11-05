@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.26.0](https://github.com/SilentVoid13/Templater/compare/2.25.1...2.26.0) (2026-10-11)
+
+
+### Features
+
+* Update folder templates and file regex templates to support non-Markdown template files (e.g. use a .base or .canvas file as a template for newly created .base or .canvas files) ([96f7c72](https://github.com/SilentVoid13/Templater/commit/96f7c72f8cd2a970fbb9d4f211518ab0d4ccfc53))
+
+
+### Bug Fixes
+
+* Autocompletion not giving syntax correct suggestions when suggestion includes special characters such as `.` or `-` ([d394a98](https://github.com/SilentVoid13/Templater/commit/d394a98987700e8fc16a97e31eceda0689f874ed))
+* Guard child_process and util with Platform.isDesktop ([bc5e4cd](https://github.com/SilentVoid13/Templater/commit/bc5e4cdeb2303280e37f0427273309dc590b51e7))
+* Remove default hotkeys for commands ([305205d](https://github.com/SilentVoid13/Templater/commit/305205dddf9aba7130803406156e9c597b7b0e8b))
+* Stop using eval ([a994c78](https://github.com/SilentVoid13/Templater/commit/a994c78b52aecbcd01e8cd2b27bcd8fe80c9963c))
+
+### [2.25.1](https://github.com/SilentVoid13/Templater/compare/2.25.0...2.25.1) (2026-09-19)
+
+
+### Bug Fixes
+
+* Show suggestions popover after selecting an option for tp.system.multi_suggester ([a11d127](https://github.com/SilentVoid13/Templater/commit/a11d1271a48fe31cecab45867627451a9d1eafd7))
+* Styling of tp.system.multi_suggester selected options looking incorrect on newer Obsidian versions ([1e130f7](https://github.com/SilentVoid13/Templater/commit/1e130f76cd54761258f531aaec011b0c18a71ff0)), closes [#1779](https://github.com/SilentVoid13/Templater/issues/1779)
+
 ## [2.25.0](https://github.com/SilentVoid13/Templater/compare/2.24.3...2.25.0) (2026-08-05)
 
 
