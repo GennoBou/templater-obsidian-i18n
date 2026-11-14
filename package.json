@@ -1,6 +1,6 @@
 {
     "name": "templater-obsidian-i18n",
-    "version": "26.11.6",
+    "version": "26.11.14",
     "description": "Create and use templates (i18n edition)",
     "main": "main.js",
     "scripts": {
